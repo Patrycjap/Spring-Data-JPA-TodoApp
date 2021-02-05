@@ -21,13 +21,14 @@
         }
         .header a {
             color: white;
+            text-decoration: none
         }
     </style>
 </head>
 <body>
 <div class="header" style="width: 100%; max-width: 1000px; margin: 10px  auto">
     <h2>Todo List</h2>
-    <a href="/">Wszystkie</a>
+    <a href="/" >Wszystkie </a>
     <span> </span>
     <div style="display: inline-block" th:each="category : ${T(pp.springdata.todo.Category).values()}">
         <a th:href="|/?category=${category.name}|" th:text="${category.getDisplayName()}"></a>
