@@ -38,7 +38,6 @@ public class TodoController {
         return "home";
     }
 
-
     @GetMapping("/todo/{id}")
     public String showToDo(@PathVariable Long id, Model model) {
         Optional<Todo> todoOptional = todoRepository.findById(id);
@@ -55,11 +54,9 @@ public class TodoController {
     @GetMapping("/todo/{id}/edit")
     public String todoEditForm(@PathVariable Long id, Model model) {
         Optional<Todo> todoOptional = todoRepository.findById(id);
-
         if (todoOptional.isPresent()) {
             Todo todo = todoOptional.get();
             model.addAttribute("todoToEdit", todo);
-
             return "todoEdit";
         } else {
             return "redirect:/";
@@ -69,15 +66,12 @@ public class TodoController {
     @PostMapping("/todo/{id}/edit")
     public String editTask(@PathVariable Long id, Todo todo) {
         Todo todo1 = todoRepository.findById(id).orElseThrow();
-
         todo1.setTitle(todo.getTitle());
         todo1.setDescription(todo.getDescription());
         todo1.setDeadline(todo.getDeadline());
         todo1.setCategory(todo.getCategory());
         todo1.setDone(todo.getDone());
-
         todoRepository.save(todo1);
-
         return "redirect:/todo/" + todo1.getId();
     }
 
@@ -89,9 +83,7 @@ public class TodoController {
 
     @PostMapping("/todo/add")
     public String addTask(Todo todo) {
-
         todoRepository.save(todo);
-
         return "redirect:/todo/" + todo.getId();
     }
 }

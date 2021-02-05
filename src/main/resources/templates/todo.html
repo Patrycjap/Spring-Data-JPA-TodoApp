@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${todo.title}"></title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -25,9 +24,7 @@
     </style>
 </head>
 <body>
-
 <div class="header" style="width: 100%; max-width: 1000px; margin: 10px  auto">
-
     <h2>Todo List</h2>
     <a href="/">Wszystkie</a>
     <span> </span>
@@ -36,19 +33,14 @@
         <span> </span>
     </div>
 </div>
-
 <div class="content">
     <h2 th:text="${todo.title}"></h2>
-
     <b>Termin:</b>
     <span th:text="${todo.deadline}"> </span>
-
     <br>Opis zadania:</br>
     <span th:text="${todo.description}"> </span><br/>
-
     <br/><br/>
     <a th:href="|/todo/${todo.id}/edit|" class="btn btn-primary mb-3">Edytuj</a>
 </div>
-
 </body>
 </html>
