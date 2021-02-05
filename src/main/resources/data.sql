@@ -1,4 +1,4 @@
-INSERT INTO Todo (category,deadline,title,description,is_done)
+INSERT INTO Todo (category,deadline,title,description,done)
 VALUES
 ('HOME','2021-02-04','Sunday party','to buy milk, water','false'),
 ('TRAVEL','2021-04-04','Flight ticket','description2','false'),

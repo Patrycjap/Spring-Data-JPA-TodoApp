@@ -18,14 +18,15 @@
         .header {
             margin-left: 15%;
             background-color: slategrey;
-
+        }
+        .header a {
+            color: white;
         }
     </style>
 </head>
 <body>
 
 <div class="header" style="width: 100%; max-width: 1000px; margin: 10px  auto">
-
     <h2>Todo List</h2>
     <a href="/">Wszystkie</a>
     <span> </span>
@@ -34,21 +35,16 @@
         <span> </span>
     </div>
 </div>
-
 <div class="content">
-
     <form th:action="|/todo/add|" method="post" th:object="${todoAdd}">
-
         <div class="mb-3">
             <label for="title" class="form-label">Tytuł</label>
             <input type="text" required class="form-control" id="title" th:field="*{title}">
         </div>
-
         <div class="mb-3">
             <label for="deadline" class="form-label">Termin</label>
             <input type="date" required class="form-control" id="deadline" th:field="*{deadline}">
         </div>
-
         <div class="mb-3">
             <label for="category" class="form-label">Kategoria</label>
             <select class="form-select" required id="category" th:field="*{category}">
@@ -59,14 +55,15 @@
                     nazwa_kategorii
                 </option>
             </select>
-
         </div>
-
         <div class="mb-3">
             <label for="description" class="form-label">Opis</label>
             <textarea id="description" th:field="*{description}" class="form-control"></textarea>
         </div>
-
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="isDone" th:field="*{done}"/>
+            <label for="isDone" class="form-check-label">Zaznacz jeśli wykonane</label>
+        </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary mb-3">Add</button>
         </div>

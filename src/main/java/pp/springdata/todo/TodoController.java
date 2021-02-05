@@ -1,5 +1,6 @@
 package pp.springdata.todo;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class TodoController {
@@ -20,18 +22,22 @@ public class TodoController {
     }
 
     @GetMapping("/")
-    public String home(Model model, @RequestParam(required = false) Category category) {
-
+    public String home(Model model, @RequestParam(required = false) Category category,
+                       @RequestParam(required = false, defaultValue = "false") Boolean archive) {
         List<Todo> todoList;
         if (category != null) {
             todoList = todoRepository.findByCategoryOrderByDeadline(category);
         } else {
-            todoList = todoRepository.findAll();
+            todoList = todoRepository.findAll(Sort.by("deadline"));
         }
-        model.addAttribute("todoList", todoList);
+
+        model.addAttribute("todoList", todoList.stream()
+                .filter(todo -> todo.getDone().equals(archive))
+                .collect(Collectors.toList()));
         model.addAttribute("todoAdd", new Todo());
         return "home";
     }
+
 
     @GetMapping("/todo/{id}")
     public String showToDo(@PathVariable Long id, Model model) {
@@ -68,7 +74,7 @@ public class TodoController {
         todo1.setDescription(todo.getDescription());
         todo1.setDeadline(todo.getDeadline());
         todo1.setCategory(todo.getCategory());
-        todo1.setDone(todo.isDone());
+        todo1.setDone(todo.getDone());
 
         todoRepository.save(todo1);
 

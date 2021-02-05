@@ -21,6 +21,11 @@
             margin-left: 15%;
             background-color: slategrey;
         }
+
+        .header a {
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -34,19 +39,19 @@
         <a th:href="|/?category=${category.name}|" th:text="${category.getDisplayName()}"></a>
         <span> </span>
     </div>
+    <a href="?archive=true">Archived</a>
 </div>
 
 <div class="content">
     <h2>Lista zadań</h2>
     <ul class="list-group">
-        <li class="list-group-item" th:each="todo: ${todoList}">
+        <li class="list-group-item d-flex justify-content-between align-item-center"
+            th:each="todo: ${todoList}">
             <a th:href="|/todo/${todo.id}|" th:text="|${todo.title}|"></a>
         </li>
-
     </ul>
     <br>
     <a th:href="|/todo/add|">Dodaj</a>
     </br>
-</div>
 </body>
 </html>

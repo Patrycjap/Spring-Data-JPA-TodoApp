@@ -19,7 +19,7 @@ public class Todo {
     private LocalDate deadline;
 
     @Column(columnDefinition = "boolean default false")
-    private boolean isDone;
+    private Boolean done =false;
 
     @Enumerated(EnumType.STRING)
     private Category category;
@@ -56,12 +56,12 @@ public class Todo {
         this.deadline = deadline;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public Boolean getDone() {
+        return done;
     }
 
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setDone(Boolean done) {
+         this.done = done;
     }
 
     public Category getCategory() {
