@@ -6,9 +6,11 @@ public enum Category {
     TRAVEL("Podróż");
 
     private String displayName;
+
     Category(String displayName) {
         this.displayName = displayName;
     }
+
     public String getDisplayName() {
         return displayName;
     }

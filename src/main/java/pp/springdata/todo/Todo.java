@@ -1,6 +1,7 @@
 package pp.springdata.todo;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -19,7 +20,7 @@ public class Todo {
     private LocalDate deadline;
 
     @Column(columnDefinition = "boolean default false")
-    private Boolean done =false;
+    private Boolean done = false;
 
     @Enumerated(EnumType.STRING)
     private Category category;
@@ -61,7 +62,7 @@ public class Todo {
     }
 
     public void setDone(Boolean done) {
-         this.done = done;
+        this.done = done;
     }
 
     public Category getCategory() {
